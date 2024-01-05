@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="ensemble-fleche">
+    <img src="fleche_gauche.svg" class="img-svg1" >
+    <div class="slide">
+        <div class="card cardX"></div>
+        <div class="card card1"></div>
+        <div class="card card2"></div>
+        <div class="card card3"></div>
+        <div class="card card4"></div>
+        <div class="card card5"></div>
+        <div class="card card6"></div>
+        <div class="card card7"></div>
+        <div class="card card8"></div>
+        <div class="card card9"></div>
+        <div class="card cardX"></div>
+    </div>
+    <img src="fleche_droite.svg" class="img-svg2" >
+</div>
+    <style>
+        .slide{
+           padding-top: 80px;
+           padding-bottom: 80px;
+            display: flex;
+            overflow:scroll;
+            scroll-behavior: smooth;
+        }
+        .ensemble-fleche{
+            width:700px;
+            min-width: 700px;
+            display: flex;
+            margin: auto;
+        }
+      
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        .card{
+border: 1px solid whitesmoke;
+width:200px;
+height: 400px;
+min-width:200px;
+min-height:400px;
+transition-duration: 1000ms;
+margin: 5px;
+z-index: 1;
+}
+.card1{
+    background: url(img1.jpg);
+    background-size: cover;
+}
+.card2{
+background:url(img2.png);
+background-size: cover;
+
+}
+.card3{
+background:url(img3.jpg);
+background-size: cover;
+}
+.card4{
+background:url(img4.jpg);
+background-size: cover;
+}
+.card5{
+background:url(img5.jpg);
+background-size: cover;
+}
+.card6{
+background:url(img6.jpg);
+background-size: cover;
+}
+.card7{
+background:url(img7.jpg);
+background-size: cover;
+}
+.card8{
+background:url(img8.jpg);
+background-size: cover;
+}
+.card9{
+background:url(img9.jpg);
+background-size: cover;
+}
+</style>
+<script>
+var tab=document.querySelectorAll(".card");
+var fleche1=document.querySelector(".img-svg1");
+var fleche2=document.querySelector(".img-svg2");
+var slide=document.querySelector(".slide");
+var indice_carte_milieu=1;
+function augmenter(variable) {
+        variable.style="z-index:2;transform: scale(1.2);width:calc(2*100%);";
+}
+function diminuer(variable) {
+    variable.style="transform: scale(1); z-index=1";
+    
+}
+
+window.onload=()=>{
+    augmenter(tab[indice_carte_milieu]);
+}
+
+fleche1.onclick=()=>{
+    if(indice_carte_milieu!=1){
+    diminuer(tab[indice_carte_milieu]);
+    console.log(tab[indice_carte_milieu].width);
+    augmenter(tab[indice_carte_milieu-1]);
+    slide.scrollBy(-210,0);
+    indice_carte_milieu=indice_carte_milieu-1;
+    }
+ }
+
+fleche2.onclick=()=>{
+   if(indice_carte_milieu!=9){
+   
+    diminuer(tab[indice_carte_milieu]);
+    augmenter(tab[indice_carte_milieu+1]);
+    slide.scrollBy(210,0);
+    indice_carte_milieu=indice_carte_milieu+1;
+   }
+   
+   
+}
+ 
+    </script>
+</body>
+</html>
